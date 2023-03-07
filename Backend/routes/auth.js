@@ -9,6 +9,12 @@ const fetchuser = require("../middlewares/fetchuser")
 let success = false;
 const JWT_SECRET = "harrysisagoodb$oy"
 
+//Fetching all users
+router.get("/fetchallusers", async (req, res) => {
+    const user = await User.find({})
+    res.json(user);
+})
+
 // Creating a route to sign up
 router.post("/createuser", [
     body('name', 'Enter a valid name').isLength({ min: 3 }),

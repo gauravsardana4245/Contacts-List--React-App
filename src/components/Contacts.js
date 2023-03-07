@@ -25,6 +25,7 @@ const Contacts = (props) => {
                 setName(json.name);
             }
             fetchdata();
+            setName(props.name);
         }
         else {
             navigate("/login");

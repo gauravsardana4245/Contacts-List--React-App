@@ -3,15 +3,15 @@ import { useState } from 'react';
 import contactsContext from "../context/contacts/ContactContext"
 
 const AddContact = (props) => {
+    const { mode } = props;
     const buttonStyle = {
         height: "50px",
-        border: "1px solid black",
+        border: `1px solid ${mode === 'light' ? 'black' : 'white'}`,
         fontSize: "20px"
 
     }
     const context = useContext(contactsContext);
-    const { addContact } = context;
-    const { mode } = props;
+    const { addContact, contacts, setContacts } = context;
     const [contact, setContact] = useState({ name: "", mobile: "", email: "" })
 
     const changeHandler = (e) => {
@@ -25,16 +25,15 @@ const AddContact = (props) => {
     const submitHandler = (e) => {
         e.preventDefault();
         addContact(contact.name, contact.mobile, contact.email);
-
-        setContact({ name: "", mobile: "", email: "" });
-
         ref.current.click();
+        // setContacts(contacts.concat({ name: contact.name, mobile: contact.mobile, email: contact.email }));
+        setContact({ name: "", mobile: "", email: "" });
     }
     return (
         <div>
 
-            <button style={buttonStyle} type="button" ref={ref} className="btn container mx-3" data-toggle="modal" data-target="#exampleModal3">
-                <i className="fa-solid fa-user-plus"></i>   Add Contact
+            <button style={buttonStyle} type="button" ref={ref} className={`btn container mx-3 text-${mode === 'light' ? 'dark' : 'light'}`} data-toggle="modal" data-target="#exampleModal3">
+                <i className="fa-solid fa-user-plus"></i>   Add a Contact
             </button>
 
 
@@ -55,7 +54,7 @@ const AddContact = (props) => {
 
                                 </div>
                                 <div className="mb-3">
-                                    <label htmlFor="emobile" className="form-label">Mobile No.</label>
+                                    <label htmlFor="emobile" className="form-label">Mobile No. (Atleast 10 digit)</label>
                                     <input type="tel" className="form-control" id="mobile" value={contact.mobile} name="mobile" onChange={changeHandler} />
                                 </div>
                                 <div className="mb-3">
@@ -68,7 +67,7 @@ const AddContact = (props) => {
                         <div className="modal-footer">
 
                             <button type="button" ref={ref2} className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button disabled={contact.mobile.length >= 10} type="submit" className="btn btn-primary" onClick={submitHandler}>Add Contact</button>
+                            <button type="submit" disabled={contact.mobile.length < 10} className="btn btn-primary" onClick={submitHandler}>Add Contact</button>
                         </div>
                     </div>
                 </div>

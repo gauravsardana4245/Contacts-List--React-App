@@ -12,6 +12,7 @@ import Alert from './components/Alert';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import { useState } from 'react';
+import SetPassword from './components/SetPassword';
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -50,12 +51,13 @@ function App() {
     <div className="App">
       <ContactState>
         <HashRouter>
-          <Navbar name={name} toggleMode={toggleMode} mode={mode} />
+          <Navbar name={name} toggleMode={toggleMode} mode={mode} setName={setName} />
           <Alert alert={alert} />
           <Routes>
             <Route exact path='/about' element={<About />} />
+            <Route exact path='/setpassword' element={<SetPassword showAlert={showAlert} setName={setName} />} />
             <Route exact path='/' element={<Home showAlert={showAlert} setName={setName} mode={mode} />} />
-            <Route exact path='/home' element={<Home showAlert={showAlert} mode={mode} setName={setName} />} />
+            <Route exact path='/home' element={<Home showAlert={showAlert} mode={mode} setName={setName} name={name} />} />
             <Route exact path='/login' element={<Login showAlert={showAlert} setName={setName} />} />
             <Route exact path='/signup' element={<Signup showAlert={showAlert} setName={setName} />} />
 

@@ -32,14 +32,22 @@ const ContactState = (props) => {
             body: JSON.stringify({ name: name, mobile: mobile, email: email })
         });
         const json = await response.json();
-        const contact = json;
+        const contact = json.contact;
+        console.log(contact);
         // const newContact = {
         //     name: contact.name,
         //     mobile: contact.mobile,
         //     email: contact.email
         // }
-
-        setContacts(contacts.concat(contact));
+        if (json.success) {
+            let newContacts = JSON.parse(JSON.stringify(contacts));
+            newContacts.push(contact);
+            console.log(typeof newContacts);
+            setContacts(newContacts);
+        }
+        else {
+            alert("A contact with this name alredy exists!")
+        }
     }
 
     const deleteContact = async (id) => {

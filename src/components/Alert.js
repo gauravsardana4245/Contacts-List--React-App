@@ -5,6 +5,7 @@ export default function Alert(props) {
     const alertStyle = {
         height: "50px",
         display: "flex",
+        paddingLeft: "4px",
         // justifyContent: center,
         alignItems: "center"
     }
@@ -16,7 +17,7 @@ export default function Alert(props) {
         return lower.charAt(0).toUpperCase() + lower.slice(1);
     }
     return (
-        <div style={{ height: "50px" }}>
+        <div className='container' style={{ height: "50px" }}>
             {props.alert &&
                 <div style={alertStyle} className={`alert-${props.alert.type} alert-dismissible fade show`} role="alert">
                     <strong>{capitalize(props.alert.type)}</strong>: {props.alert.msg}

@@ -16,12 +16,14 @@ router.post("/addcontact", fetchuser, [
     body('mobile', 'Mobile No must be atleast 10 characters long').isLength({ min: 10 })
 
 ], async (req, res) => {
+    let success = false;
     try {
+
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-        let contact = await Contact.findOne({ name: req.body.name })
+        let contact = await Contact.findOne({ name: req.body.name, user: req.user.id })
         if (contact) {
             return res.status(400).json({ error: "Sorry a contact with this name already exists" });
         }
@@ -31,8 +33,8 @@ router.post("/addcontact", fetchuser, [
             email: req.body.email,
             user: req.user.id
         })
-
-        res.json({ contact });
+        success = true;
+        res.json({ contact, success });
     }
     catch (error) {
         console.error(error.message);
