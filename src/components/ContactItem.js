@@ -11,8 +11,6 @@ const ContactItem = (props) => {
     const ref2 = useRef(null);
     const handleClick = () => {
         ref.current.click();
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
     }
 
