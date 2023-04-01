@@ -51,8 +51,12 @@ function App() {
     <div className="App">
       <ContactState>
         <HashRouter>
-          <Navbar name={name} toggleMode={toggleMode} mode={mode} setName={setName} />
-          <Alert alert={alert} />
+          <div>
+            <Navbar name={name} toggleMode={toggleMode} mode={mode} setName={setName} />
+          </div>
+          <div>
+            <Alert alert={alert} />
+          </div>
           <Routes>
             <Route exact path='/about' element={<About />} />
             <Route exact path='/setpassword' element={<SetPassword showAlert={showAlert} setName={setName} />} />

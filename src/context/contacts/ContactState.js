@@ -2,7 +2,7 @@ import { useState } from "react"
 import ContactContext from "./ContactContext"
 
 const ContactState = (props) => {
-    const host = "http://localhost:5000"
+    const host = "https://icontacts-gaurav-backend.onrender.com"
 
     const contactsInitial = []
     const [contacts, setContacts] = useState(contactsInitial)

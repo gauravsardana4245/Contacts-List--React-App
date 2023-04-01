@@ -8,10 +8,9 @@ const AddContact = (props) => {
         height: "50px",
         border: `1px solid ${mode === 'light' ? 'black' : 'white'}`,
         fontSize: "20px"
-
     }
     const context = useContext(contactsContext);
-    const { addContact, contacts, setContacts } = context;
+    const { addContact } = context;
     const [contact, setContact] = useState({ name: "", mobile: "", email: "" })
 
     const changeHandler = (e) => {
@@ -32,7 +31,7 @@ const AddContact = (props) => {
     return (
         <div>
 
-            <button style={buttonStyle} type="button" ref={ref} className={`btn container mx-3 text-${mode === 'light' ? 'dark' : 'light'}`} data-toggle="modal" data-target="#exampleModal3">
+            <button style={buttonStyle} type="button" ref={ref} className={`btn container mx-2 text-${mode === 'light' ? 'dark' : 'light'}`} data-toggle="modal" data-target="#exampleModal3">
                 <i className="fa-solid fa-user-plus"></i>   Add a Contact
             </button>
 

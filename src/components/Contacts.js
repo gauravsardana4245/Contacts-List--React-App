@@ -13,7 +13,7 @@ const Contacts = (props) => {
         if (localStorage.getItem("token")) {
             getContacts();
             async function fetchdata() {
-                const response = await fetch("http://localhost:5000/api/auth/getuser", {
+                const response = await fetch("https://icontacts-gaurav-backend.onrender.com/api/auth/getuser", {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ const Contacts = (props) => {
 
 
 
-    }, [])
+    }, [getContacts, setName, props.name, navigate])
 
     const [contact, setContact] = useState({ id: "", ename: "", emobile: "", eemail: "" })
 
@@ -59,7 +59,9 @@ const Contacts = (props) => {
     }
     return (
         <>
-            <AddContact mode={mode} />
+            <div>
+                <AddContact mode={mode} />
+            </div>
             <button type="button" ref={ref} className="btn btn-primary d-none" data-toggle="modal" data-target="#exampleModal">
                 Launch demo modal
             </button>
@@ -100,7 +102,7 @@ const Contacts = (props) => {
                     </div>
                 </div>
             </div>
-            <div className='row my-5 mx-3 container'>
+            <div className='row my-5 mx-2 container'>
                 <h2>Your Contacts</h2>
                 {contacts.length === 0 && <div className='container'> No contacts to display</div>}
                 {contacts.map((currentcontact) => {

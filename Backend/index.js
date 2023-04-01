@@ -13,8 +13,8 @@ app.use(express.json());
 //     next();
 // });
 app.use(cors())
-app.use('/api/auth', require('/Users/gauravsardana/contacts-app/Backend/routes/auth.js'))
-app.use('/api/contacts', require('/Users/gauravsardana/contacts-app/Backend/routes/contacts.js'))
+app.use('/api/auth', require('./routes/auth.js'))
+app.use('/api/contacts', require('./routes/contacts.js'))
 app.listen(port, () => {
     console.log(`Example app listening at port ${port}`);
 })
