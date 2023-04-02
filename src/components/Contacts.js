@@ -33,7 +33,7 @@ const Contacts = (props) => {
 
 
 
-    }, [getContacts, setName, props.name, navigate])
+    }, [])
 
     const [contact, setContact] = useState({ id: "", ename: "", emobile: "", eemail: "" })
 
