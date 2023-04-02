@@ -66,7 +66,7 @@ const AddContact = (props) => {
                         <div className="modal-footer">
 
                             <button type="button" ref={ref2} className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" disabled={contact.mobile.length < 10} className="btn btn-primary" onClick={submitHandler}>Add Contact</button>
+                            <button type="submit" className="btn btn-primary" onClick={submitHandler}>Add Contact</button>
                         </div>
                     </div>
                 </div>
