@@ -12,8 +12,8 @@ router.get("/fetchallcontacts", fetchuser, async (req, res) => {
 
 // Add a new Contact 
 router.post("/addcontact", fetchuser, [
-    body('name', 'Enter a valid name').isLength({ min: 3 }),
-    body('mobile', 'Mobile No must be atleast 10 characters long').isLength({ min: 10 })
+    body('name', 'Enter a valid name').isLength({ min: 2 }),
+    body('mobile')
 
 ], async (req, res) => {
     let success = false;

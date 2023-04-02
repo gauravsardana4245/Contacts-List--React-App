@@ -59,7 +59,7 @@ const Contacts = (props) => {
     }
     return (
         <>
-            <div>
+            <div className='d-flex justify-content-center'>
                 <AddContact mode={mode} />
             </div>
             <button type="button" ref={ref} className="btn btn-primary d-none" data-toggle="modal" data-target="#exampleModal">
@@ -102,8 +102,8 @@ const Contacts = (props) => {
                     </div>
                 </div>
             </div>
-            <div className='row my-5 mx-2 container'>
-                <h2>Your Contacts</h2>
+            <div className='row my-5 mx-auto container'>
+                <h2 className='text-center'>Your Contacts</h2>
                 {contacts.length === 0 && <div className='container'> No contacts to display</div>}
                 {contacts.map((currentcontact) => {
                     return <ContactItem key={currentcontact.name} updateContact={updateContact} contact={currentcontact} showAlert={showAlert} mode={mode} />

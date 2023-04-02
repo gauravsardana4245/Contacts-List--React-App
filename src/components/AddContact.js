@@ -7,7 +7,7 @@ const AddContact = (props) => {
     const buttonStyle = {
         height: "50px",
         border: `1px solid ${mode === 'light' ? 'black' : 'white'}`,
-        fontSize: "20px"
+        fontSize: "20px",
     }
     const context = useContext(contactsContext);
     const { addContact } = context;
@@ -29,9 +29,9 @@ const AddContact = (props) => {
         setContact({ name: "", mobile: "", email: "" });
     }
     return (
-        <div>
+        <div style={{ width: "90%" }}>
 
-            <button style={buttonStyle} type="button" ref={ref} className={`btn container mx-2 text-${mode === 'light' ? 'dark' : 'light'}`} data-toggle="modal" data-target="#exampleModal3">
+            <button style={buttonStyle} type="button" ref={ref} className={`btn container w-100 text-${mode === 'light' ? 'dark' : 'light'}`} data-toggle="modal" data-target="#exampleModal3">
                 <i className="fa-solid fa-user-plus"></i>   Add a Contact
             </button>
 
@@ -40,7 +40,7 @@ const AddContact = (props) => {
                 <div className="modal-dialog" role="document">
                     <div className={`modal-content bg-${mode === 'light' ? 'light' : 'dark'} text-${mode === 'light' ? 'dark' : 'light'}`} >
                         <div className="modal-header">
-                            <h5 className="modal-name" id="exampleModalLabel">Edit Details</h5>
+                            <h5 className="modal-name" id="exampleModalLabel">Add a New Contact</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -48,12 +48,12 @@ const AddContact = (props) => {
                         <div className="modal-body">
                             <form className='my-3'>
                                 <div className="mb-3">
-                                    <label htmlFor="ename" className="form-label">Name</label>
+                                    <label htmlFor="ename" className="form-label">Name (Atleast 2 characters)</label>
                                     <input type="text" className="form-control" id="name" value={contact.name} aria-describedby="emailHelp" name="name" onChange={changeHandler} />
 
                                 </div>
                                 <div className="mb-3">
-                                    <label htmlFor="emobile" className="form-label">Mobile No. (Atleast 10 digit)</label>
+                                    <label htmlFor="emobile" className="form-label">Mobile No.</label>
                                     <input type="tel" className="form-control" id="mobile" value={contact.mobile} name="mobile" onChange={changeHandler} />
                                 </div>
                                 <div className="mb-3">
